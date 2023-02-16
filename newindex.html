@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/newcss.css">
+    <title>Document</title>
+</head>
+<body>
+
+<header>
+    <h1>view high score</h1>
+    <h2 id="countdown">Time Left:</h2>
+</header>
+<main>
+    <section id="start-screen" class="first-screen" data-state="revealed">
+        <h2>coding QUiz</h2>
+        <p>Test your knowledge and see if you are on your way to being a coder</p>
+        <button id = start-quiz>start quiz </button>
+    </section>
+    <section id="quiz-screen" class="hide" data-state="hidden">
+        <p></p>
+        <button>1:</button>
+        <button>2:</button>
+        <button>3:</button>
+        <button>4:</button>
+    </section>
+    <section id="end-screen" class="hide-last" data-state="hidden">
+        <input type="Initials">
+        <button>submit</button>
+    </section>
+</main>
+
+ <script src="./assets/js/newscript.js"></script>   
+</body>
+</html>
