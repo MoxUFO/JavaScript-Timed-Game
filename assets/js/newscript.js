@@ -11,6 +11,7 @@ let buttonNumThree = document.getElementById('btn-3')
 let buttonNumFour = document.getElementById('btn-4')
 let timeLeft;
 let qindex = 0;
+let i;
 // console.log(playCard)
 let questionsArr = [
  {
@@ -137,7 +138,7 @@ let questionsArr = [
     quizSection.classList.remove('hide')
 }
 
-let i = 0
+ i = 0
 let questionPresented = questionsArr[i].question
 questionField.textContent = questionPresented
 
@@ -151,29 +152,20 @@ let answerFourPresented = questionsArr[i].choices[3].answer
 buttonNumFour.textContent = answerFourPresented
 
 let rightAnswer = questionsArr[i].correctAnswer 
-console.log(rightAnswer === questionsArr[i].choices[i].answer )
-console.log(questionsArr[i].choices[i].answer)
+// console.log(rightAnswer === questionsArr[i].choices[i].answer )
+// console.log(questionsArr[i].choices[i].answer)
 
 
 
 
 allAnswer.addEventListener('click', function(event){
-  
+
     let userPick = event.target.textContent
     // console.log(userPick)
 
-    for (;i < questionsArr.length; i++) {
-      // console.log(questionsArr[i])
-    
-      if ( rightAnswer === userPick){
-        console.log('hi' )
-        
-       }  
-    
-      // if (questionsArr[i]===questionsArr[0]){
-      //   console.log(questionsArr[i].question)
-      
-     }
+  if ( rightAnswer === userPick){
+    console.log('hi')
+  }
  
    
    
@@ -198,6 +190,10 @@ function gameClock() {
   hourGlass.textContent = 'Time Left: ' + timeLeft;
 }, 500);
 } 
+
+function nextQuestion (){
+
+}
 
 
  
