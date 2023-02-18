@@ -4,58 +4,22 @@ let hourGlass = document.getElementById('countdown')
 let kickStart = document.getElementById('start-quiz')
 let playCard =document.querySelectorAll('section')
 let questionField = document.getElementById('question')
-let allAnswer = document.getElementById('answers')
 let buttonNumOne = document.getElementById('btn-1')
 let buttonNumTwo = document.getElementById('btn-2')
 let buttonNumThree = document.getElementById('btn-3')
 let buttonNumFour = document.getElementById('btn-4')
 let timeLeft;
-let qindex = 0;
+let qindex = 0
 // console.log(playCard)
 let questionsArr = [
  {
     question: "What's my name?",
-    choices: [
-      {
-        answer: "Nelson",
-        correct: true,
-      },
-      {
-        answer: "Alex",
-        correct: false,
-      },
-      {
-        answer: "Kev",
-        correct: false,
-      },
-      {
-        answer: "The Space COwboy",
-        correct: false,
-      },
-    ],
-    correctAnswer: 'Nelson'
+    choices: ['nelson', 'kev', 'tommy', 'dave'],
+      answer:'0'
   },
   {
     questio: "What's my name?",
-    choices: [
-      {
-        answer: "Welson",
-        correct: true,
-      },
-      {
-        answer: "Alex",
-        correct: false,
-      },
-      {
-        answer: "Kev",
-        correct: false,
-      },
-      {
-        answer: "Mike",
-        correct: false,
-      },
-    ],
-    correctAnswer: 'Welson'
+    choices: [ 'nelson', 'kev', 'tommy', 'dave'],
   },
   {
     question: "What's my name?",
@@ -77,10 +41,9 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: 'Belson'
   },
   {
-    question: "what is my name?",
+    question: "?",
     choices: [
       {
         answer: "Telson",
@@ -99,7 +62,6 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: 'Telson'
   },
   {
     question: "Where should the script tag be located?",
@@ -121,67 +83,71 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: "befroe the closing body tag "
   },
   
 ];
+function getrQuestion (){
+  questionF.textContent = questionsArr[qindex].question
+}
 
- 
+function checkAnswer(event){
+  let userAnswer = event.target.id
+  if (userAnswer === questionsArr.answer){
+    answer.textContent = 'correct';
+    
+  } else {
+    answer.textContent = 'incorrect';
+  }
+}
+
+
+console.log(questionsArr[4].choices[1])
+ for ( let i = 0; i < questionsArr.length;i++ ) {
+  // console.log(questionsArr[i])
+  if (questionsArr[i]===questionsArr[0]){
+    // console.log(questionsArr[i].question)
+    let questionPresented = questionsArr[i].question
+    questionField.textContent = questionPresented
+  
+    let answerOnePresented = questionsArr[i].choices[0].answer
+    buttonNumOne.textContent = answerOnePresented
+    let answerTwoPresented = questionsArr[i].choices[1].answer
+    buttonNumTwo.textContent = answerTwoPresented
+    let answerThreePResented = questionsArr[i].choices[2].answer
+    buttonNumThree.textContent = answerThreePResented
+    let answerFourPresented = questionsArr[i].choices[3].answer
+    buttonNumFour.textContent = answerFourPresented
+
+    // console.log(questionsArr[3].choices[1].correct)
+
+
+  }
+
 
   
+ }
+
+
+
+
+
+
+
 
  function startQuiz(event){
   event.preventDefault()
     gameClock()
     startSection.classList.add('hide')
     quizSection.classList.remove('hide')
-}
-
-let i = 0
-let questionPresented = questionsArr[i].question
-questionField.textContent = questionPresented
-
-let answerOnePresented = questionsArr[i].choices[0].answer
-buttonNumOne.textContent = answerOnePresented
-let answerTwoPresented = questionsArr[i].choices[1].answer
-buttonNumTwo.textContent = answerTwoPresented
-let answerThreePResented = questionsArr[i].choices[2].answer
-buttonNumThree.textContent = answerThreePResented
-let answerFourPresented = questionsArr[i].choices[3].answer
-buttonNumFour.textContent = answerFourPresented
-
-let rightAnswer = questionsArr[i].correctAnswer 
-console.log(rightAnswer === questionsArr[i].choices[i].answer )
-console.log(questionsArr[i].choices[i].answer)
 
 
 
-
-allAnswer.addEventListener('click', function(event){
-  
-    let userPick = event.target.textContent
-    // console.log(userPick)
-
-    for (;i < questionsArr.length; i++) {
-      // console.log(questionsArr[i])
-    
-      if ( rightAnswer === userPick){
-        console.log('hi' )
-        
-       }  
-    
-      // if (questionsArr[i]===questionsArr[0]){
-      //   console.log(questionsArr[i].question)
-      
-     }
  
-   
-   
-})
+    
 
 
 
-
+}
 
 
 

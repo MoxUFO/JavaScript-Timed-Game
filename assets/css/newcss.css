@@ -21,15 +21,25 @@ main {
     height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.hide {
+.quiz-screen {
     text-align: center;
     background-color: greenyellow;
     width: 50%;
     height: 50%;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.answers {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
 }
 .hide-last {
     text-align: center;
@@ -38,4 +48,8 @@ main {
     height: 50%;
     display: none;
 
+}
+
+.hide {
+    display: none;
 }
