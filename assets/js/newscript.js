@@ -13,6 +13,8 @@ let buttonNumFour = document.getElementById('btn-4')
 let timeLeft;
 let qindex;
 let i = 0;
+timeLeft =  75;
+
 // console.log(playCard)
 let questionsArr = [
  {
@@ -137,13 +139,15 @@ let questionsArr = [
   event.preventDefault()
     gameClock()
     showQuestion()
-    startSection.classList.add('hide')
-    quizSection.classList.remove('hide')
+   
     
 }
 
 //  i = 0
  function showQuestion(){
+
+  startSection.classList.add('hide')
+  quizSection.classList.remove('hide')
 let questionPresented = questionsArr[i].question
 questionField.textContent = questionPresented
 
@@ -171,7 +175,6 @@ allAnswer.addEventListener('click', function(event){
 
   if (userPick !== questionsArr[i].correctAnswer){
     console.log('wrong')
-   
   } else {
     nextQuestion()
   }
@@ -182,7 +185,7 @@ allAnswer.addEventListener('click', function(event){
 
 
 function gameClock() {
-    timeLeft =  15;
+  
 
     gameTime = setInterval(function(){
   if (timeLeft <= 1){
@@ -195,9 +198,9 @@ function gameClock() {
 
 function nextQuestion (){
 if( i === 4 ){
-  // console.log('done')
-  quizSection.classList.add('.hide')
-  endGame.classList.remove('.hide')
+  console.log('done')
+  quizSection.classList.add('hide')
+  endGame.classList.remove('hide')
 } else {
   i++;
   showQuestion()
