@@ -41,12 +41,12 @@ main {
     justify-content: space-around;
     
 }
-.hide-last {
+.end-game {
     text-align: center;
     background-color: orange;
     width: 50%;
     height: 50%;
-    display: none;
+   
 
 }
 

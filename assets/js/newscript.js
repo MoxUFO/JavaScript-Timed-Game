@@ -1,5 +1,6 @@
 let startSection = document.getElementById('start-screen')
 let quizSection =document.getElementById('quiz-screen')
+let endGame = document.getElementById('end-screen')
 let hourGlass = document.getElementById('countdown')
 let kickStart = document.getElementById('start-quiz')
 let playCard =document.querySelectorAll('section')
@@ -11,96 +12,96 @@ let buttonNumThree = document.getElementById('btn-3')
 let buttonNumFour = document.getElementById('btn-4')
 let timeLeft;
 let qindex;
-let i;
+let i = 0;
 // console.log(playCard)
 let questionsArr = [
  {
-    question: "What's my name?",
+    question: "What does '===' represent?",
     choices: [
       {
-        answer: "Nelson",
+        answer: "Strictly Equal",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "some what equal",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "triple equal",
         correct: false,
       },
       {
-        answer: "The Space COwboy",
+        answer: "anit-equal",
         correct: false,
       },
     ],
-    correctAnswer: 'Nelson'
+    correctAnswer: "Strictly Equal"
   },
   {
-    questio: "What's my name2?",
+    question: "what method is used to take an item out the end of an array?",
     choices: [
       {
-        answer: "Welson",
+        answer: ".drop()",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: ".lastOut()",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: ".pop()",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: ".unshift()",
         correct: false,
       },
     ],
-    correctAnswer: 'Welson'
+    correctAnswer: ".pop()"
   },
   {
-    question: "What's my name3?",
+    question: "what is the name of the data type that returns a value of true or false?",
     choices: [
       {
-        answer: "Belson",
+        answer: "Lie detector",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "Boolean",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "thruthyAndFalsy",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: "balloon",
         correct: false,
       },
     ],
-    correctAnswer: 'Belson'
+    correctAnswer: "Boolean",
   },
   {
-    question: "what is my name4?",
+    question: "which is NOT a way to declarea varible",
     choices: [
       {
-        answer: "Telson",
+        answer: "let",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "const",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "var",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: "this",
         correct: false,
       },
     ],
-    correctAnswer: 'Telson'
+    correctAnswer: "this"
   },
   {
     question: "Where should the script tag be located?",
@@ -122,23 +123,27 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: "befroe the closing body tag "
+    correctAnswer: "Before the closing body tag",
   },
   
 ];
 
  
 
+
   
 
  function startQuiz(event){
   event.preventDefault()
     gameClock()
+    showQuestion()
     startSection.classList.add('hide')
     quizSection.classList.remove('hide')
+    
 }
 
- i = 0
+//  i = 0
+ function showQuestion(){
 let questionPresented = questionsArr[i].question
 questionField.textContent = questionPresented
 
@@ -151,7 +156,8 @@ buttonNumThree.textContent = answerThreePResented
 let answerFourPresented = questionsArr[i].choices[3].answer
 buttonNumFour.textContent = answerFourPresented
 
-let rightAnswer = questionsArr[i].correctAnswer 
+
+ }
 // console.log(rightAnswer === questionsArr[i].choices[i].answer )
 // console.log(questionsArr[i].choices[i].answer)
 
@@ -163,9 +169,11 @@ allAnswer.addEventListener('click', function(event){
     let userPick = event.target.textContent
     // console.log(userPick)
 
-  if ( rightAnswer === userPick){
-    // console.log('hi')
-   nextQuestion()
+  if (userPick !== questionsArr[i].correctAnswer){
+    console.log('wrong')
+   
+  } else {
+    nextQuestion()
   }
  
    
@@ -173,15 +181,8 @@ allAnswer.addEventListener('click', function(event){
 })
 
 
-
-
-
-
-
-
-
 function gameClock() {
-    timeLeft =  10;
+    timeLeft =  15;
 
     gameTime = setInterval(function(){
   if (timeLeft <= 1){
@@ -189,12 +190,18 @@ function gameClock() {
   }
   timeLeft--
   hourGlass.textContent = 'Time Left: ' + timeLeft;
-}, 500);
+}, 1000);
 } 
 
 function nextQuestion (){
-
-  console.log(questionPresented)
+if( i === 4 ){
+  // console.log('done')
+  quizSection.classList.add('.hide')
+  endGame.classList.remove('.hide')
+} else {
+  i++;
+  showQuestion()
+}
 
 }
 
