@@ -10,7 +10,7 @@ let buttonNumTwo = document.getElementById('btn-2')
 let buttonNumThree = document.getElementById('btn-3')
 let buttonNumFour = document.getElementById('btn-4')
 let timeLeft;
-let qindex = 0;
+let qindex;
 let i;
 // console.log(playCard)
 let questionsArr = [
@@ -37,7 +37,7 @@ let questionsArr = [
     correctAnswer: 'Nelson'
   },
   {
-    questio: "What's my name?",
+    questio: "What's my name2?",
     choices: [
       {
         answer: "Welson",
@@ -59,7 +59,7 @@ let questionsArr = [
     correctAnswer: 'Welson'
   },
   {
-    question: "What's my name?",
+    question: "What's my name3?",
     choices: [
       {
         answer: "Belson",
@@ -81,7 +81,7 @@ let questionsArr = [
     correctAnswer: 'Belson'
   },
   {
-    question: "what is my name?",
+    question: "what is my name4?",
     choices: [
       {
         answer: "Telson",
@@ -164,7 +164,8 @@ allAnswer.addEventListener('click', function(event){
     // console.log(userPick)
 
   if ( rightAnswer === userPick){
-    console.log('hi')
+    // console.log('hi')
+   nextQuestion()
   }
  
    
@@ -192,6 +193,8 @@ function gameClock() {
 } 
 
 function nextQuestion (){
+
+  console.log(questionPresented)
 
 }
 
