@@ -11,10 +11,18 @@
 <body>
 
 <header>
-    <h1>view high score</h1>
+    <h1><button class="" id="score-button">View High Score</button></h1>
     <h2 id="countdown">Time Left:</h2>
 </header>
 <main>
+    <section id="score-screen" class="view-scores hide">
+    <section class="socre-display">
+         <h2>High Scores</h2>
+         <ol id="listmother">place holder</ol>
+          <button id="go-home-btn">return</button>
+          <button id="reset-score">clears scores</button>
+    </section>
+    </section>
     <section id="start-screen" class="first-screen" data-state="shown">
         <h2>coding QUiz</h2>
         <p>Test your knowledge and see if you are on your way to being a coder</p>
@@ -30,7 +38,8 @@
         </div>
     </section>
     <section id="end-screen" class="end-game hide" data-state="hidden1">
-        <input type="Initials">
+        <label for="name" id="showScore"></label>
+        <input type="text" id="player" placeholder="input intitials">
         <button id="submit-score">submit</button>
     </section>
 </main>

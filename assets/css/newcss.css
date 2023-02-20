@@ -14,6 +14,19 @@ main {
     align-items: center;
 }
 
+.view-scores{
+    text-align: center;
+    background-color: yellow;
+    width: 50%;
+    height: 50%;
+}
+
+.score-display{
+    width: 50%;
+    height: 50%;
+   display: flex;
+}
+
 .first-screen {
     text-align: center;
     background-color: antiquewhite;
