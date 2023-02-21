@@ -16,7 +16,9 @@ N/A
 
 ## Usage
 
-User starts on a Screen that has two options to choose. The first, is to start the quiz; The Second, is to view previous players scores. The page that shows previous scores has two buutons. The first, takes the user back to the Start Screen; The second, permently delete all previous held scores. Once the quiz is started a timer will display 75 seconds and countdown. The first question and its accompying answers will appear on screen. User will be able to click on one of the buttons, moving to the next question right or wrong. Wrong answers will detuct time of 20 seconds from your play time. your time remainig is the score you keep at the end. time depleted by wrong answers will displays as 0 on the timer but score will likely be negative due to wrong answer score deduction still taking effect. user will then be prompted to submit a name to attach the score to and will be later displayed on the view score screen 
+User starts on a Screen that has two options to choose. The first, is to start the quiz; The Second, is to view previous players scores. The page that shows previous scores has two buutons. The first, takes the user back to the Start Screen; The second, permently delete all previous held scores. Once the quiz is started a timer will display 75 seconds and countdown. The first question and its accompying answers will appear on screen. User will be able to click on one of the buttons, moving to the next question right or wrong. Wrong answers will detuct time of 20 seconds from your play time. your time remainig is the score you keep at the end. time depleted by wrong answers will displays as 0 on the timer but score will likely be negative due to wrong answer score deduction still taking effect. user will then be prompted to submit a name to attach the score to and will be later displayed on the view score screen.
+
+disclaimer: High Score screen does NOT display the when the high score screen is pulled forward. updates will come soon to include the feature.
 
 ## Picture of quiz's Start Screen
 
