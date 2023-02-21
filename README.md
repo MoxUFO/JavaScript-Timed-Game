@@ -24,5 +24,8 @@ User starts on a Screen that has two options to choose. The first, is to start t
 
 ## Link to Quiz
 
+https://moxufo.github.io/JavaScript-Timed-Game/
+
+
 
 
