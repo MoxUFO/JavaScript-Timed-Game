@@ -1,92 +1,116 @@
-console.log("Linked");
-
-var questionsArr = [
+let startSection = document.getElementById("start-screen");
+let viewScores = document.getElementById("score-button");
+let homeScreen = document.getElementById("go-home-btn");
+let scoreReset = document.getElementById("reset-score");
+let scoreList = document.getElementById("list-parent");
+let highScores = document.getElementById("score-screen");
+let quizSection = document.getElementById("quiz-screen");
+let endGame = document.getElementById("end-screen");
+let hourGlass = document.getElementById("countdown");
+let kickStart = document.getElementById("start-quiz");
+let playCard = document.querySelectorAll("section");
+let questionField = document.getElementById("question");
+let allAnswer = document.getElementById("answers");
+let buttonNumOne = document.getElementById("btn-1");
+let buttonNumTwo = document.getElementById("btn-2");
+let buttonNumThree = document.getElementById("btn-3");
+let buttonNumFour = document.getElementById("btn-4");
+let playerInput = document.getElementById("player");
+let submitScore = document.getElementById("submit-score");
+let timeLeft = 75;
+let i = 0;
+let questionsArr = [
   {
-    questionOne: "What's my name?",
+    question: "What does '===' represent?",
     choices: [
       {
-        answer: "Nelson",
+        answer: "Strictly Equal",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "some what equal",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "triple equal",
         correct: false,
       },
       {
-        answer: "The Space COwboy",
+        answer: "anit-equal",
         correct: false,
       },
     ],
+    correctAnswer: "Strictly Equal",
   },
   {
-    questionTwo: "What's my name?",
+    question: "what method is used to take an item out the end of an array?",
     choices: [
       {
-        answer: "Welson",
+        answer: ".drop()",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: ".lastOut()",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: ".pop()",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: ".unshift()",
         correct: false,
       },
     ],
+    correctAnswer: ".pop()",
   },
   {
-    questionThree: "What's my name?",
+    question:
+      "what is the name of the data type that returns a value of true or false?",
     choices: [
       {
-        answer: "Welson",
+        answer: "Lie detector",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "Boolean",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "thruthyAndFalsy",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: "balloon",
         correct: false,
       },
     ],
+    correctAnswer: "Boolean",
   },
   {
-    questionFour: "?",
+    question: "which is NOT a way to declarea varible",
     choices: [
       {
-        answer: "Welson",
+        answer: "let",
         correct: true,
       },
       {
-        answer: "Alex",
+        answer: "const",
         correct: false,
       },
       {
-        answer: "Kev",
+        answer: "var",
         correct: false,
       },
       {
-        answer: "Mike",
+        answer: "this",
         correct: false,
       },
     ],
+    correctAnswer: "this",
   },
   {
-    questionFive: "Where should the script tag be located?",
+    question: "Where should the script tag be located?",
     choices: [
       {
         answer: "Before the closing body tag",
@@ -105,47 +129,122 @@ var questionsArr = [
         correct: false,
       },
     ],
+    correctAnswer: "Before the closing body tag",
   },
-  
 ];
-var currentIndex;
+hourGlass.textContent = "Time Left: " + timeLeft;
 
-function startQuiz() {
-    currentIndex = 0
-  // start the timer
-  //hide the start screen
-  //unhide the quiz screen
-  // displayQuestion()
+function startQuiz(event) {
+  event.preventDefault();
+  gameClock();
+  showQuestion();
 }
 
-function displayQuestion() {
-var currentQuestion = questionsArr[0]
-console.log(questionsArr[1])
-  // WE want to display ANY QUESTION with this function
-  // We can empty the quiz-screen container
-  //create an html element
-  // style or add class to the element
-  //populate the text content
-  //append it (if you have to target where to append it, do so)
+function showQuestion() {
+  startSection.classList.add("hide");
+  viewScores.classList.add("hide");
+  quizSection.classList.remove("hide");
+  let questionPresented = questionsArr[i].question;
+  questionField.textContent = questionPresented;
 
-  //WE're going to have to create buttons for each choice and add an event listener
-  //When they click it, you want to check answer!
+  let answerOnePresented = questionsArr[i].choices[0].answer;
+  buttonNumOne.textContent = answerOnePresented;
+  let answerTwoPresented = questionsArr[i].choices[1].answer;
+  buttonNumTwo.textContent = answerTwoPresented;
+  let answerThreePResented = questionsArr[i].choices[2].answer;
+  buttonNumThree.textContent = answerThreePResented;
+  let answerFourPresented = questionsArr[i].choices[3].answer;
+  buttonNumFour.textContent = answerFourPresented;
 }
 
-function checkAnswer(event){
-    event.preventDefault()
-    console.log(event)
-    console.log(this)
-    console.log(event.target)
+allAnswer.addEventListener("click", function (event) {
+  let userPick = event.target.textContent;
+  // console.log(userPick)
 
-// You want to check if the answer is correct or not
+  if (userPick !== questionsArr[i].correctAnswer) {
+    console.log("wrong");
+    timeLeft = timeLeft - 20;
+    if (timeLeft <= 0) {
+      timeLeft.textContent = " time left: 0 ";
+      quizSection.classList.add("hide");
+      endGame.classList.remove("hide");
+    }
+  } else {
+    nextQuestion();
+  }
+});
 
-
-// Do we just want to automatically move to the next question?
-// Do we have more questions to show?
-//if we do, then move the current Index up and displayQuestion()
-//iof you don't then you want to call endQuiz()
-
-
+function gameClock() {
+  gameTime = setInterval(function () {
+    if (timeLeft <= 1) {
+      clearInterval(gameTime);
+    }
+    if (i === 4) {
+      clearInterval(gameTime);
+    }
+    timeLeft--;
+    hourGlass.textContent = "Time Left: " + timeLeft;
+    if (timeLeft <= 0 && i < 4) {
+      console.log(" you stink");
+      hourGlass.textContent = "Time Left : 0";
+      quizSection.classList.add("hide");
+      endGame.classList.remove("hide");
+    }
+  }, 1000);
 }
- displayQuestion()
+
+function nextQuestion() {
+  if (i === 4) {
+    console.log("done");
+    quizSection.classList.add("hide");
+    endGame.classList.remove("hide");
+    // console.log(timeLeft)
+  } else {
+    i++;
+    showQuestion();
+  }
+}
+
+submitScore.addEventListener("click", function () {
+  // console.log(i);
+  let playerScore = timeLeft;
+
+  let playerName = document.querySelector("#player").value;
+
+  localStorage.setItem("player", playerName);
+  localStorage.setItem("playerscore", playerScore);
+  i = 0;
+  endGame.classList.add("hide");
+  startSection.classList.remove("hide");
+  viewScores.classList.remove("hide");
+  timeLeft = 75;
+  hourGlass.textContent = " Time Left: " + timeLeft;
+});
+
+let topPlayer = localStorage.getItem("player");
+console.log(topPlayer);
+let topScore = localStorage.getItem("playerscore");
+let PlayersMark = topPlayer + " " + topScore;
+
+let score1 = document.createElement("li");
+let score2 = document.createElement("li");
+let score3 = document.createElement("li");
+let score4 = document.createElement("li");
+let score5 = document.createElement("li");
+console.log(PlayersMark);
+
+scoreReset.addEventListener("click", function () {
+  localStorage.clear("player", "playerscore");
+});
+
+viewScores.addEventListener("click", function () {
+  startSection.classList.add("hide");
+  highScores.classList.remove("hide");
+});
+
+homeScreen.addEventListener("click", function () {
+  highScores.classList.add("hide");
+  startSection.classList.remove("hide");
+});
+
+kickStart.addEventListener("click", startQuiz);
