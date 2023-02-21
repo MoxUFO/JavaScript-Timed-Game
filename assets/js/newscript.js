@@ -1,25 +1,26 @@
-let startSection = document.getElementById('start-screen')
-let viewScores = document.getElementById('score-button')
-let homeScreen = document.getElementById('go-home-btn')
-let scoreReset = document.getElementById('reset-score')
-let highScores = document.getElementById('score-screen')
-let quizSection =document.getElementById('quiz-screen')
-let endGame = document.getElementById('end-screen')
-let hourGlass = document.getElementById('countdown')
-let kickStart = document.getElementById('start-quiz')
-let playCard =document.querySelectorAll('section')
-let questionField = document.getElementById('question')
-let allAnswer = document.getElementById('answers')
-let buttonNumOne = document.getElementById('btn-1')
-let buttonNumTwo = document.getElementById('btn-2')
-let buttonNumThree = document.getElementById('btn-3')
-let buttonNumFour = document.getElementById('btn-4')
-let playerInput = document.getElementById('player')
-let submitScore = document.getElementById('submit-score')
+let startSection = document.getElementById("start-screen");
+let viewScores = document.getElementById("score-button");
+let homeScreen = document.getElementById("go-home-btn");
+let scoreReset = document.getElementById("reset-score");
+let scoreList = document.getElementById("list-parent");
+let highScores = document.getElementById("score-screen");
+let quizSection = document.getElementById("quiz-screen");
+let endGame = document.getElementById("end-screen");
+let hourGlass = document.getElementById("countdown");
+let kickStart = document.getElementById("start-quiz");
+let playCard = document.querySelectorAll("section");
+let questionField = document.getElementById("question");
+let allAnswer = document.getElementById("answers");
+let buttonNumOne = document.getElementById("btn-1");
+let buttonNumTwo = document.getElementById("btn-2");
+let buttonNumThree = document.getElementById("btn-3");
+let buttonNumFour = document.getElementById("btn-4");
+let playerInput = document.getElementById("player");
+let submitScore = document.getElementById("submit-score");
 let timeLeft = 75;
 let i = 0;
 let questionsArr = [
- {
+  {
     question: "What does '===' represent?",
     choices: [
       {
@@ -39,7 +40,7 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: "Strictly Equal"
+    correctAnswer: "Strictly Equal",
   },
   {
     question: "what method is used to take an item out the end of an array?",
@@ -61,10 +62,11 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: ".pop()"
+    correctAnswer: ".pop()",
   },
   {
-    question: "what is the name of the data type that returns a value of true or false?",
+    question:
+      "what is the name of the data type that returns a value of true or false?",
     choices: [
       {
         answer: "Lie detector",
@@ -105,7 +107,7 @@ let questionsArr = [
         correct: false,
       },
     ],
-    correctAnswer: "this"
+    correctAnswer: "this",
   },
   {
     question: "Where should the script tag be located?",
@@ -129,111 +131,120 @@ let questionsArr = [
     ],
     correctAnswer: "Before the closing body tag",
   },
-  
 ];
-hourGlass.textContent = 'Time Left: ' + timeLeft;
+hourGlass.textContent = "Time Left: " + timeLeft;
 
- function startQuiz(event){
-  event.preventDefault()
-    gameClock()
-    showQuestion()   
+function startQuiz(event) {
+  event.preventDefault();
+  gameClock();
+  showQuestion();
 }
 
- function showQuestion(){
+function showQuestion() {
+  startSection.classList.add("hide");
+  viewScores.classList.add("hide");
+  quizSection.classList.remove("hide");
+  let questionPresented = questionsArr[i].question;
+  questionField.textContent = questionPresented;
 
-  startSection.classList.add('hide')
-  viewScores.classList.add('hide')
-  quizSection.classList.remove('hide')
-let questionPresented = questionsArr[i].question
-questionField.textContent = questionPresented
+  let answerOnePresented = questionsArr[i].choices[0].answer;
+  buttonNumOne.textContent = answerOnePresented;
+  let answerTwoPresented = questionsArr[i].choices[1].answer;
+  buttonNumTwo.textContent = answerTwoPresented;
+  let answerThreePResented = questionsArr[i].choices[2].answer;
+  buttonNumThree.textContent = answerThreePResented;
+  let answerFourPresented = questionsArr[i].choices[3].answer;
+  buttonNumFour.textContent = answerFourPresented;
+}
 
-let answerOnePresented = questionsArr[i].choices[0].answer
-buttonNumOne.textContent = answerOnePresented
-let answerTwoPresented = questionsArr[i].choices[1].answer
-buttonNumTwo.textContent = answerTwoPresented
-let answerThreePResented = questionsArr[i].choices[2].answer
-buttonNumThree.textContent = answerThreePResented
-let answerFourPresented = questionsArr[i].choices[3].answer
-buttonNumFour.textContent = answerFourPresented
- }
+allAnswer.addEventListener("click", function (event) {
+  let userPick = event.target.textContent;
+  // console.log(userPick)
 
-allAnswer.addEventListener('click', function(event){
-  
-
-    let userPick = event.target.textContent
-    // console.log(userPick)
-
-  if (userPick !== questionsArr[i].correctAnswer){
-    console.log('wrong')
+  if (userPick !== questionsArr[i].correctAnswer) {
+    console.log("wrong");
+    timeLeft = timeLeft - 20;
+    if (timeLeft <= 0) {
+      timeLeft.textContent = " time left: 0 ";
+      quizSection.classList.add("hide");
+      endGame.classList.remove("hide");
+    }
   } else {
-    nextQuestion()
+    nextQuestion();
   }
- 
-   
-   
-})
-
+});
 
 function gameClock() {
-  
-
-    gameTime = setInterval(function(){
-  if (timeLeft <= 1){
-    clearInterval(gameTime)
-  }
-  if (i === 4 ){
-    clearInterval(gameTime)
-  }
-  timeLeft--
-  hourGlass.textContent = 'Time Left: ' + timeLeft;
-}, 1000);
-} 
-
-function nextQuestion (){
-if( i === 4 ){
-  console.log('done')
-  quizSection.classList.add('hide')
-  endGame.classList.remove('hide')
-  // console.log(timeLeft)
-} else {
-  i++;
-  showQuestion()
+  gameTime = setInterval(function () {
+    if (timeLeft <= 1) {
+      clearInterval(gameTime);
+    }
+    if (i === 4) {
+      clearInterval(gameTime);
+    }
+    timeLeft--;
+    hourGlass.textContent = "Time Left: " + timeLeft;
+    if (timeLeft <= 0 && i < 4) {
+      console.log(" you stink");
+      hourGlass.textContent = "Time Left : 0";
+      quizSection.classList.add("hide");
+      endGame.classList.remove("hide");
+    }
+  }, 1000);
 }
 
+function nextQuestion() {
+  if (i === 4) {
+    console.log("done");
+    quizSection.classList.add("hide");
+    endGame.classList.remove("hide");
+    // console.log(timeLeft)
+  } else {
+    i++;
+    showQuestion();
+  }
 }
 
+submitScore.addEventListener("click", function () {
+  // console.log(i);
+  let playerScore = timeLeft;
 
-submitScore.addEventListener( 'click', function(){
-console.log(i)
-let playerScore = timeLeft
+  let playerName = document.querySelector("#player").value;
 
-let playerName = document.querySelector('#player').value;
+  localStorage.setItem("player", playerName);
+  localStorage.setItem("playerscore", playerScore);
+  i = 0;
+  endGame.classList.add("hide");
+  startSection.classList.remove("hide");
+  viewScores.classList.remove("hide");
+  timeLeft = 75;
+  hourGlass.textContent = " Time Left: " + timeLeft;
+});
 
-localStorage.setItem('player', playerName)
-localStorage.setItem('playerscore', playerScore)
-i = 0
-endGame.classList.add('hide')
-startSection.classList.remove('hide')
-viewScores.classList.remove('hide')
-timeLeft = 75
-hourGlass.textContent = ' Time Left: ' + timeLeft
-})
+let topPlayer = localStorage.getItem("player");
+console.log(topPlayer);
+let topScore = localStorage.getItem("playerscore");
+let PlayersMark = topPlayer + " " + topScore;
 
-scoreReset.addEventListener('click', function(){
-  localStorage.clear('player', 'playerscore')
-})
+let score1 = document.createElement("li");
+let score2 = document.createElement("li");
+let score3 = document.createElement("li");
+let score4 = document.createElement("li");
+let score5 = document.createElement("li");
+console.log(PlayersMark);
 
-viewScores.addEventListener('click', function(){
-  startSection.classList.add('hide')
-  highScores.classList.remove('hide')
-})
+scoreReset.addEventListener("click", function () {
+  localStorage.clear("player", "playerscore");
+});
 
-homeScreen.addEventListener('click',function(){
-  highScores.classList.add('hide')
-  startSection.classList.remove('hide')
-})
- 
+viewScores.addEventListener("click", function () {
+  startSection.classList.add("hide");
+  highScores.classList.remove("hide");
+});
 
+homeScreen.addEventListener("click", function () {
+  highScores.classList.add("hide");
+  startSection.classList.remove("hide");
+});
 
-
-kickStart.addEventListener('click', startQuiz);
+kickStart.addEventListener("click", startQuiz);

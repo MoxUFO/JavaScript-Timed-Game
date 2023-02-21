@@ -1,71 +1,79 @@
 header {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    height: 5vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  height: 15vh;
+  padding-top: 40px;
 }
 
 main {
-    background-color: rgb(43, 160, 214);
-    height: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(26, 75, 131);
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+h1,
+h2 {
+  font-size: 30px;
 }
 
-.view-scores{
-    text-align: center;
-    background-color: yellow;
-    width: 50%;
-    height: 50%;
+.view-scores {
+  text-align: center;
+  background-color: yellow;
+  width: 50%;
+  height: 50%;
+  border-radius: 12px;
 }
 
-.score-display{
-    width: 50%;
-    height: 50%;
-   display: flex;
+.score-display {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  border-radius: 12px;
 }
 
 .first-screen {
-    text-align: center;
-    background-color: antiquewhite;
-    width: 50%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  text-align: center;
+  background-color: rgb(98, 190, 218);
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 12px;
 }
 
 .quiz-screen {
-    text-align: center;
-    background-color: greenyellow;
-    width: 50%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  text-align: center;
+  background-color: rgb(98, 190, 218);
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 12px;
 }
 
 .answers {
-    margin-top: 7px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .end-game {
-    text-align: center;
-    background-color: orange;
-    width: 50%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-   
-
+  text-align: center;
+  background-color: rgb(98, 190, 218);
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 12px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
