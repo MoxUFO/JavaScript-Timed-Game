@@ -20,6 +20,7 @@ User starts on a Screen that has two options to choose. The first, is to start t
 
 ## Picture of quiz's Start Screen
 
+![Screenshot_20230220_115229](https://user-images.githubusercontent.com/121896793/220251368-a7bb3333-1d7d-449b-9292-d6aec73c313b.png)
 
 ## Link to Quiz
 
