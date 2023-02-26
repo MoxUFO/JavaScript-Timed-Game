@@ -19,6 +19,7 @@ let playerInput = document.getElementById("player");
 let submitScore = document.getElementById("submit-score");
 let timeLeft = 75;
 let i = 0;
+let scores =[]
 let questionsArr = [
   {
     question: "What does '===' represent?",
@@ -204,15 +205,37 @@ function nextQuestion() {
     showQuestion();
   }
 }
+let j = 0;
+var keptScores = JSON.parse(localStorage.getItem("Playerscore"));
+// console.log(keptScores)
+for (let i = 0; i < keptScores.length; i++) {
+ console.log(keptScores[i].score)
+ 
+let scoreListItems = document.createElement('li')
+scoreListItems.textContent = keptScores[i].name + ':' + keptScores[i].score
+scoreList.appendChild(scoreListItems) 
+console.log()
+}
 
 submitScore.addEventListener("click", function () {
-  // console.log(i);
+  // console.log();
   let playerScore = timeLeft;
-
+ 
+  let storedScores = JSON.parse(localStorage.getItem('Playerscore'))
+  console.log(storedScores)
+  if(!storedScores){
+    storedScores = []
+  }
   let playerName = document.querySelector("#player").value;
+  // console.log(playerName)
+  // //localStorage.setItem(playerName, playerScore);
+  // localStorage.setItem("playerName", playerName);
+  // localStorage.setItem("playerscore", playerScore);
+  var value ={ name: playerName,score: playerScore}
+  storedScores.push(value)
+localStorage.setItem("Playerscore", JSON.stringify(storedScores));
 
-  localStorage.setItem("player", playerName);
-  localStorage.setItem("playerscore", playerScore);
+  j++;
   i = 0;
   endGame.classList.add("hide");
   startSection.classList.remove("hide");
@@ -221,20 +244,23 @@ submitScore.addEventListener("click", function () {
   hourGlass.textContent = " Time Left: " + timeLeft;
 });
 
-let topPlayer = localStorage.getItem("player");
-console.log(topPlayer);
-let topScore = localStorage.getItem("playerscore");
-let PlayersMark = topPlayer + " " + topScore;
+
+
+// let topPlayer = localStorage.getItem();
+// console.log(topPlayer);
+// let topScore = localStorage.getItem("playerscore");
+// let PlayersMark = topPlayer + " " + topScore;
 
 let score1 = document.createElement("li");
 let score2 = document.createElement("li");
 let score3 = document.createElement("li");
 let score4 = document.createElement("li");
 let score5 = document.createElement("li");
-console.log(PlayersMark);
+// console.log(PlayersMark);
 
-scoreReset.addEventListener("click", function () {
-  localStorage.clear("player", "playerscore");
+scoreReset.addEventListener("click", function (event) {
+  event.preventDefault
+  localStorage.clear('Playerscore');
 });
 
 viewScores.addEventListener("click", function () {
@@ -246,5 +272,6 @@ homeScreen.addEventListener("click", function () {
   highScores.classList.add("hide");
   startSection.classList.remove("hide");
 });
+
 
 kickStart.addEventListener("click", startQuiz);
